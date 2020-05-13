@@ -21,11 +21,11 @@
 			<view class="skuView" v-for="(item,index) in skuArr" :key='index'>
 				<view class="skuName">{{item.name}}</view>
 				<view class="skuItemview">
-					<view 
-						class="skuItem" 
-						v-for="(item2,index2) in item.values" 
+					<view
+						class="skuItem"
+						v-for="(item2,index2) in item.values"
 						@click="chooseSku(index,index2, item2.disabled)"
-						:class="[(item2.checked && !item2.disabled)?'active':'', item2.disabled ? 'disabled':'']" 
+						:class="[(item2.checked && !item2.disabled)?'active':'', item2.disabled ? 'disabled':'']"
 						:key='index2'>{{item2.value}}</view>
 				</view>
 			</view>
@@ -71,13 +71,14 @@
 				})
 				this.skuArr = skuArr;
 				this.specArr = specArr;
-				
+
 			},
 			// 点击规格按钮
 			chooseSku(currentIndex, currentIndex2, isDiabled){
 				if(isDiabled) return;
 				this.chooseSkuObj[currentIndex] = currentIndex2;
 				this.choosesSkuArr[currentIndex] = currentIndex2;
+				// 重制按钮
 				this.skuArr.forEach((m, n)=>{
 					m.values.forEach((j, k)=>{
 						if(currentIndex==n){
@@ -111,7 +112,7 @@
 					}
 				})
 				console.log(this.skuArr);
-				
+
 				this.stock = stock;
 				if(priceArr.length==1){
 					this.price = priceArr[0];
